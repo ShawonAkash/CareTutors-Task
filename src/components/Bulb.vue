@@ -7,15 +7,29 @@
 </template>
 
 <script>
+  import { useToast } from "vue-toastification";
 export default {
   data(){
     return{
       show: false
     }
   },
+  setup(){
+const toast = useToast();
+return { toast }
+  },
   methods:{
     on(){
       this.show = !this.show
+      this.toast.error("I'm a toast!", {
+  pauseOnFocusLoss: true,
+  pauseOnHover: true,
+  draggable: true,
+  showCloseButtonOnHover: true,
+  hideProgressBar: false,
+  closeButton: "button",
+  icon: true,
+});
     }
   }
 }
